@@ -18,6 +18,8 @@ main() {
     echo "A" | softwareupdate --install-rosetta
     printf "Installing Nix"
     yes | sh <(curl -L https://nixos.org/nix/install)
+    printf "Downloading dotfiles"
+    nix-shell --packages git --run 'git clone https://github.com/haaawk/dotfiles'
     printf "Finished"
 }
 
