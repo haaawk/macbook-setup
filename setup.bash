@@ -19,8 +19,10 @@ main() {
     echo "A" | softwareupdate --install-rosetta
     printf "Installing Nix\n"
     yes | sh <(curl -L https://nixos.org/nix/install)
-    printf "Please restart the terminal and run:\n"
-    printf "curl https://raw.githubusercontent.com/haaawk/macbook-setup/refs/heads/main/setup2.bash > setup2.bash && bash setup2.bash && rm setup2.bash"
+    printf "Downloading dotfiles\n"
+    GIT_SSH_COMMAND="ssh -i ~/.ssh/github" git clone git@github.com:haaawk/dotfiles.git
+    ~/dotfiles/setup.bash
+    printf "Finished\n"
 }
 
 main
